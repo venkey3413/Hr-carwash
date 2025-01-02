@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .receipt {
+            border: 1px solid #000;
+            padding: 20px;
+            width: 300px;
+        }
+        .receipt h2 {
+            text-align: center;
+        }
+        .receipt p {
+            margin: 5px 0;
+        }
+        .total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="receipt">
+        <h2>Car Wash Receipt</h2>
+        <p><strong>Customer Name:</strong> {{ task.customer_name }}</p>
+        <p><strong>Phone Number:</strong> {{ task.phone_number }}</p>
+        <p><strong>Service:</strong> {{ task.service }}</p>
+        <p class="total"><strong>Total Price:</strong> ${{ task.price }}</p>
+    </div>
+</body>
+</html>
