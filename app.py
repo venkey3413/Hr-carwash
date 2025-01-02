@@ -50,6 +50,11 @@ def add_task():
             conn.commit()
     return redirect(url_for('home'))
 
+@app.route('/task-list')
+def task_list():
+    tasks = Task.query.all()
+    return render_template('task_list.html', tasks=tasks)
+
 @app.route('/delete/<int:task_id>')
 def delete_task(task_id):
     with sqlite3.connect(DATABASE) as conn:
@@ -59,5 +64,6 @@ def delete_task(task_id):
     return redirect(url_for('home'))
 
 if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)
     init_db()
     app.run(debug=True)
