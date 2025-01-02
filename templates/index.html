@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Waterwash Tasks</title>
+    <title>Car Washing Service</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-    <h1>Waterwash Task Manager</h1>
+    <h1>Car Washing Service Manager</h1>
     <form action="/add" method="POST">
-        <input type="text" name="task_name" placeholder="Enter task" required>
+        <label for="user_name">User Name:</label>
+        <input type="text" name="user_name" id="user_name" placeholder="Enter user name" required>
+        <br>
+        <label for="car_type">Car Type:</label>
+        <input type="text" name="car_type" id="car_type" placeholder="Enter car type" required>
+        <br>
+        <label for="washing_price">Washing Price:</label>
+        <input type="number" name="washing_price" id="washing_price" placeholder="Enter price" required>
+        <br>
+        <label for="estimation_time">Estimation Time (minutes):</label>
+        <input type="number" name="estimation_time" id="estimation_time" placeholder="Enter time" required>
+        <br>
         <button type="submit">Add Task</button>
     </form>
+    
+    <h2>Scheduled Tasks</h2>
     <ul>
         {% for task in tasks %}
         <li>
-            {{ task }} <a href="/delete/{{ loop.index0 }}">Delete</a>
+            <strong>User:</strong> {{ task.user_name }} | 
+            <strong>Car Type:</strong> {{ task.car_type }} | 
+            <strong>Price:</strong> ${{ task.washing_price }} | 
+            <strong>Time:</strong> {{ task.estimation_time }} mins
+            <a href="/delete/{{ loop.index0 }}">Delete</a>
         </li>
         {% endfor %}
     </ul>
