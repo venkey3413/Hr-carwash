@@ -1,0 +1,7 @@
+<!-- task_list.html -->
+{% for task in tasks %}
+    <div>
+        <p>{{ task.customer_name }} - {{ task.service }} - ${{ task.price }}</p>
+        <a href="{{ url_for('print_receipt', task_id=task.id) }}" target="_blank">Print Receipt</a>
+    </div>
+{% endfor %}
