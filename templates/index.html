@@ -12,6 +12,9 @@
         <label for="user_name">User Name:</label>
         <input type="text" name="user_name" id="user_name" placeholder="Enter user name" required>
         <br>
+        <label for="phone_number">Phone number:</label>
+        <input type="number" name="phone_number" id="phone_number" placeholder="Enter number" required>
+        <br>
         <label for="car_type">Car Type:</label>
         <input type="text" name="car_type" id="car_type" placeholder="Enter car type" required>
         <br>
@@ -29,9 +32,10 @@
         {% for task in tasks %}
         <li>
             <strong>User:</strong> {{ task[1] }} | 
-            <strong>Car Type:</strong> {{ task[2] }} | 
-            <strong>Price:</strong> ${{ task[3] }} | 
-            <strong>Time:</strong> {{ task[4] }} mins
+            <strong>number:</strong> ${{ task[2] }} |
+            <strong>Car Type:</strong> {{ task[3] }} | 
+            <strong>Price:</strong> ${{ task[4] }} | 
+            <strong>Time:</strong> {{ task[5] }} mins
             <a href="/delete/{{ task[0] }}">Delete</a>
         </li>
         {% endfor %}
