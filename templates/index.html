@@ -28,13 +28,16 @@
     <ul>
         {% for task in tasks %}
         <li>
-            <strong>User:</strong> {{ task.user_name }} | 
-            <strong>Car Type:</strong> {{ task.car_type }} | 
-            <strong>Price:</strong> ${{ task.washing_price }} | 
-            <strong>Time:</strong> {{ task.estimation_time }} mins
-            <a href="/delete/{{ loop.index0 }}">Delete</a>
+            <strong>User:</strong> {{ task[1] }} | 
+            <strong>Car Type:</strong> {{ task[2] }} | 
+            <strong>Price:</strong> ${{ task[3] }} | 
+            <strong>Time:</strong> {{ task[4] }} mins
+            <a href="/delete/{{ task[0] }}">Delete</a>
         </li>
         {% endfor %}
     </ul>
+
+    <h3>Total Cost: ${{ total_cost }}</h3>
+    <h3>Total Estimation Time: {{ total_time }} minutes</h3>
 </body>
 </html>
