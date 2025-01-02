@@ -13,6 +13,7 @@ def init_db():
             CREATE TABLE IF NOT EXISTS tasks (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_name TEXT NOT NULL,
+                Phone_number REAL NOT NULL,
                 car_type TEXT NOT NULL,
                 washing_price REAL NOT NULL,
                 estimation_time INTEGER NOT NULL
@@ -36,17 +37,18 @@ def home():
 @app.route('/add', methods=['POST'])
 def add_task():
     user_name = request.form.get('user_name')
+    Phone_number = request.form.get('phone_type')
     car_type = request.form.get('car_type')
     washing_price = request.form.get('washing_price')
     estimation_time = request.form.get('estimation_time')
 
-    if user_name and car_type and washing_price and estimation_time:
+    if user_name and phone_number and car_type and washing_price and estimation_time:
         with sqlite3.connect(DATABASE) as conn:
             cursor = conn.cursor()
             cursor.execute('''
-                INSERT INTO tasks (user_name, car_type, washing_price, estimation_time)
+                INSERT INTO tasks (user_name, phone_number, car_type, washing_price, estimation_time)
                 VALUES (?, ?, ?, ?)
-            ''', (user_name, car_type, float(washing_price), int(estimation_time)))
+            ''', (user_name, car_type, flot(phone_number), float(washing_price), int(estimation_time)))
             conn.commit()
     return redirect(url_for('home'))
 
